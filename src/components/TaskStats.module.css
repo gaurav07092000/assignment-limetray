@@ -1,0 +1,202 @@
+/* TaskStats Component Styles */
+.statsContainer {
+  padding: 32px;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  border: 1px solid;
+}
+
+.statsContainer.light {
+  background-color: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.statsContainer.dark {
+  background-color: #334155;
+  border-color: #475569;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4), 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.statsContainer:hover.light {
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.08);
+  transform: translateY(-1px);
+}
+
+.statsContainer:hover.dark {
+  box-shadow: 0 12px 35px rgba(0,0,0,0.5), 0 6px 12px rgba(0,0,0,0.3);
+  transform: translateY(-1px);
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+@media (min-width: 640px) {
+  .statsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.statCard {
+  padding: 20px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid;
+}
+
+.statCard.light {
+  background-color: #f8fafc;
+  border-color: #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.statCard.dark {
+  background-color: #1e293b;
+  border-color: #374151;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.statCard:hover {
+  transform: translateY(-3px);
+}
+
+.statCard.light:hover {
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+  background-color: #ffffff;
+  border-color: #d1d5db;
+}
+
+.statCard.dark:hover {
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  background-color: #374151;
+  border-color: #4b5563;
+}
+
+.iconWrapper {
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconWrapper.blue.light {
+  background-color: #dbeafe;
+}
+
+.iconWrapper.blue.dark {
+  background-color: rgba(59, 130, 246, 0.2);
+}
+
+.iconWrapper.amber.light {
+  background-color: #fef3c7;
+}
+
+.iconWrapper.amber.dark {
+  background-color: rgba(245, 158, 11, 0.2);
+}
+
+.iconWrapper.emerald.light {
+  background-color: #d1fae5;
+}
+
+.iconWrapper.emerald.dark {
+  background-color: rgba(16, 185, 129, 0.2);
+}
+
+.statNumber {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.statNumber.light {
+  color: #1e293b;
+}
+
+.statNumber.dark {
+  color: #f1f5f9;
+}
+
+.statLabel {
+  font-size: 14px;
+}
+
+.statLabel.light {
+  color: #64748b;
+}
+
+.statLabel.dark {
+  color: #94a3b8;
+}
+
+.progressSection {
+  border-top: 1px solid;
+  padding-top: 24px;
+}
+
+.progressSection.light {
+  border-top-color: #e2e8f0;
+}
+
+.progressSection.dark {
+  border-top-color: #475569;
+}
+
+.progressHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.progressTitle {
+  font-weight: 600;
+}
+
+.progressTitle.light {
+  color: #1e293b;
+}
+
+.progressTitle.dark {
+  color: #f1f5f9;
+}
+
+.progressPercentage {
+  font-size: 14px;
+}
+
+.progressPercentage.light {
+  color: #64748b;
+}
+
+.progressPercentage.dark {
+  color: #94a3b8;
+}
+
+.progressBarBg {
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressBarBg.light {
+  background-color: #e2e8f0;
+}
+
+.progressBarBg.dark {
+  background-color: #475569;
+}
+
+.progressBar {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #10b981);
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}

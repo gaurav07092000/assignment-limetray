@@ -1,0 +1,114 @@
+/* TaskForm Component Styles */
+.formContainer {
+  padding: 32px;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  border: 1px solid;
+}
+
+.formContainer.light {
+  background-color: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.formContainer.dark {
+  background-color: #334155;
+  border-color: #475569;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4), 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.formContainer:hover.light {
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.08);
+  transform: translateY(-1px);
+}
+
+.formContainer:hover.dark {
+  box-shadow: 0 12px 35px rgba(0,0,0,0.5), 0 6px 12px rgba(0,0,0,0.3);
+  transform: translateY(-1px);
+}
+
+.inputContainer {
+  display: flex;
+  gap: 8px;
+  position: relative;
+}
+
+.inputContainer.error {
+  animation: pulse 1s infinite;
+}
+
+.taskInput {
+  flex: 1;
+  padding: 16px 24px;
+  border: 2px solid;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  outline: none;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  min-width: 0;
+}
+
+.taskInput.light {
+  background-color: #ffffff;
+  border-color: #e2e8f0;
+  color: #1e293b;
+}
+
+.taskInput.dark {
+  background-color: #1e293b;
+  border-color: #475569;
+  color: #f1f5f9;
+}
+
+.taskInput.error {
+  border-color: #ef4444;
+}
+
+.taskInput:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.submitButton {
+  padding: 16px;
+  background-color: #3b82f6;
+  color: #ffffff;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.submitButton:hover:not(:disabled) {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.submitButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.errorMessage {
+  color: #ef4444;
+  font-size: 14px;
+  margin-top: 8px;
+  padding: 12px;
+  border-radius: 8px;
+  border-left: 4px solid #ef4444;
+}
+
+.errorMessage.light {
+  background-color: #fef2f2;
+}
+
+.errorMessage.dark {
+  background-color: rgba(239, 68, 68, 0.1);
+}

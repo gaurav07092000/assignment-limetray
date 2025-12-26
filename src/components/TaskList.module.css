@@ -1,0 +1,141 @@
+/* TaskList Component Styles */
+.listContainer {
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  border: 1px solid;
+}
+
+.listContainer.light {
+  background-color: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.listContainer.dark {
+  background-color: #334155;
+  border-color: #475569;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4), 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.listContainer:hover.light {
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.08);
+  transform: translateY(-1px);
+}
+
+.listContainer:hover.dark {
+  box-shadow: 0 12px 35px rgba(0,0,0,0.5), 0 6px 12px rgba(0,0,0,0.3);
+  transform: translateY(-1px);
+}
+
+.draggableItem {
+  padding: 8px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  transition: all 0.3s ease;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.draggableItem.light {
+  background-color: #ffffff;
+}
+
+.draggableItem.dark {
+  background-color: #1e293b;
+}
+
+.draggableItem.dragging {
+  opacity: 0.8;
+  z-index: 1000;
+  box-shadow: 0 20px 25px rgba(0,0,0,0.25);
+}
+
+.draggableItem:hover:not(.dragging).light {
+  background-color: #f1f5f9;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.draggableItem:hover:not(.dragging).dark {
+  background-color: #475569;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+}
+
+.gripHandle {
+  cursor: grab;
+  color: #94a3b8;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.gripHandle:hover.light {
+  color: #475569;
+  background-color: #e2e8f0;
+}
+
+.gripHandle:hover.dark {
+  color: #e2e8f0;
+  background-color: #475569;
+}
+
+.taskContent {
+  flex: 1;
+  min-width: 0;
+  max-width: calc(100% - 40px);
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+.emptyState {
+  border-radius: 16px;
+  padding: 80px 32px;
+  text-align: center;
+  max-width: 400px;
+  margin: 0 auto;
+  border: 1px solid;
+}
+
+.emptyState.light {
+  background-color: #ffffff;
+  border-color: #e5e7eb;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.emptyState.dark {
+  background-color: #334155;
+  border-color: #475569;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+.emptyIcon {
+  font-size: 48px;
+  margin-bottom: 24px;
+}
+
+.emptyTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.emptyTitle.light {
+  color: #1e293b;
+}
+
+.emptyTitle.dark {
+  color: #f1f5f9;
+}
+
+.emptyDescription.light {
+  color: #64748b;
+}
+
+.emptyDescription.dark {
+  color: #94a3b8;
+}
