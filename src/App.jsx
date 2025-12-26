@@ -7,7 +7,6 @@ import TaskFilter from './components/TaskFilter';
 import TaskStats from './components/TaskStats';
 import TaskList from './components/TaskList';
 import styles from './App.module.css';
-import './App.css';
 
 function AppContent() {
   const { isDark } = useTheme();
