@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useCallback, useMemo, useReducer } from 'react';
+import React, { createContext, useContext, useCallback, useMemo, useReducer, useState } from 'react';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { TASK_ACTIONS, FILTER_TYPES } from '../utils/constants';
 
@@ -72,10 +72,15 @@ const initialState = {
 // Task Provider Component
 export const TaskProvider = ({ children }) => {
   const [storedTasks, setStoredTasks] = useLocalStorage('tasks', []);
+  const [history, setHistory] = useState([]);
   const [state, dispatch] = useReducer(taskReducer, {
     ...initialState,
     tasks: storedTasks
   });
+
+  const saveHistory = useCallback((currentState = state.tasks) => {
+    setHistory((prev) => [...prev, [...currentState]]);
+  }, [state.tasks]);
 
   // Sync tasks with localStorage whenever tasks change
   React.useEffect(() => {
@@ -84,8 +89,12 @@ export const TaskProvider = ({ children }) => {
 
   // Action Creators (Memoized for performance)
   const addTask = useCallback((title) => {
+    // if(title.trim().length < 6){
+    //   setError("Task length must be greter then 6");
+    //   return err;
+    // }
     if (!title.trim()) return false; // Form validation
-    
+    saveHistory(state.tasks);
     const newTask = {
       id: Date.now() + Math.random(), // Simple ID generation
       title: title.trim(),
@@ -96,20 +105,31 @@ export const TaskProvider = ({ children }) => {
     
     dispatch({ type: TASK_ACTIONS.ADD_TASK, payload: newTask });
     return true;
-  }, []);
+  }, [saveHistory, state.tasks]);
 
   const toggleTask = useCallback((taskId) => {
+    saveHistory(state.tasks);
     dispatch({ type: TASK_ACTIONS.TOGGLE_TASK, payload: taskId });
-  }, []);
+  }, [saveHistory, state.tasks]);
 
   const deleteTask = useCallback((taskId) => {
+    saveHistory(state.tasks);
     dispatch({ type: TASK_ACTIONS.DELETE_TASK, payload: taskId });
-  }, []);
+  }, [saveHistory, state.tasks]);
 
   const updateTask = useCallback((taskId, updates) => {
     dispatch({ 
       type: TASK_ACTIONS.UPDATE_TASK, 
       payload: { id: taskId, updates: { ...updates, updatedAt: new Date().toISOString() } }
+    });
+  }, []);
+
+  const undoTask = useCallback(() => {
+    setHistory((prev) => {
+      if(prev.length === 0) return prev;
+      const lastState = prev[prev.length - 1];
+      dispatch({ type: TASK_ACTIONS.LOAD_TASKS, payload: lastState });
+      return prev.slice(0, -1);
     });
   }, []);
 
@@ -148,9 +168,11 @@ export const TaskProvider = ({ children }) => {
     filteredTasks,
     currentFilter: state.currentFilter,
     taskStats,
+    hasHistory: history.length > 0,
     addTask,
     toggleTask,
     deleteTask,
+    undoTask,
     updateTask,
     setFilter,
     reorderTasks
@@ -159,10 +181,12 @@ export const TaskProvider = ({ children }) => {
     filteredTasks,
     state.currentFilter,
     taskStats,
+    history.length,
     addTask,
     toggleTask,
     deleteTask,
     updateTask,
+    undoTask,
     setFilter,
     reorderTasks
   ]);

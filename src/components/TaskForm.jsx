@@ -15,7 +15,7 @@ const TaskForm = () => {
     e.preventDefault();
     
     // Form validation - prevent empty tasks
-    if (!inputValue.trim()) {
+    if (inputValue.trim().length < 6) {
       setIsError(true);
       setTimeout(() => setIsError(false), 2000);
       return;
@@ -58,9 +58,10 @@ const TaskForm = () => {
       </div>
       {isError && (
         <div className={`${styles.errorMessage} ${isDark ? styles.dark : styles.light}`}>
-          Task cannot be empty. Please enter a valid task.
+          Task cannot be less then 6. Please enter a valid task.
         </div>
       )}
+     
     </form>
   );
 };
